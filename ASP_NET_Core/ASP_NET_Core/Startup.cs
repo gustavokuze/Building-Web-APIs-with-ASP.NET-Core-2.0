@@ -15,6 +15,7 @@ namespace ASP_NET_Core
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(); //isso é necessário para iniciar o serviço do MVC
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -25,9 +26,12 @@ namespace ASP_NET_Core
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseMvc(); //agora o MVC será chamada
+
+
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                await context.Response.WriteAsync("Nenhum controller MVC encontrado!"); //
             });
         }
     }
